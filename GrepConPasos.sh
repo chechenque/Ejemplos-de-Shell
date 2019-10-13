@@ -1,0 +1,10 @@
+#!/bin/bash
+echo "Primero concatenamos los archivos fasta"
+cat *.fasta #| grep -oE "gb\|\w+" | grep -oE "\w+" | grep -v "gb"
+echo "Ya que los tenemos concatenados, limitamos la busqueda, le damos una expresión"
+cat *.fasta | grep -oE "gb\|\w+" #| grep -oE "\w+" | grep -v "gb"
+echo "Con este paso quitamos el | , asi ya solo nos queda gb y el id"
+cat *.fasta | grep -oE "gb\|\w+" | grep -oE "\w+" #| grep -v "gb"
+echo "Con este ultimo, lo que hacemos es que elimine el gb de los resultados, es decir,"
+echo "que solo haga match con los diferentes \"gb\""
+cat *.fasta | grep -oE "gb\|\w+" | grep -oE "\w+" | grep -v "gb"
